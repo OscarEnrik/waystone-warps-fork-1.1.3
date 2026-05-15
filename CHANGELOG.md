@@ -8,11 +8,13 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 
 ### Added
 - Support for Minecraft 26.1.
-- New `/warpcreate` command to create a new waystone via command. Permission to use: `waystonewarps.command.warpcreate`
+- New `/warpcreate` command to create a new waystone via command. Build a waystone as usual but type this command while looking at the lodestone block. Permission to use: `waystonewarps.command.warpcreate`
 - New "Global" access type for warps. Warps with this access can be used without discovery.
 - Boss bar teleport timer. Can be optionally toggled via config.
 - Waystones can no longer be moved into areas protected by land protection plugins.
+- Teleport cost can be dynamic based on distance, config options provided to tweak.
 - Warp groups feature, optionally enabled via config. Allows players to put their warp under a group for easier browsing. Groups are admin-defined.
+- Teleporting can now be restricted by a config cooldown or a player override with a metadata value: `waystonewarps.teleport_cooldown`
 - Player override values can be set without a metadata provider such as Vault. Permissions are as follows:
   - `waystonewarps.warp_limit.<number>`: Sets a player's waystone creation limit, for example `waystonewarps.warp_limit.4` or `waystonewarps.warp_limit.19`. Highest matching value wins.
   - `waystonewarps.warp_limit.*`: Allows unlimited waystone creation.
@@ -20,6 +22,8 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
   - `waystonewarps.teleport_cost.*`: Allows free teleportation (zero cost).
   - `waystonewarps.teleport_timer.<number>`: Sets a player's teleport timer in seconds, for example `waystonewarps.teleport_timer.3` for 3-second timer. Lowest matching value wins.
   - `waystonewarps.teleport_timer.*`: Allows instant teleportation (zero timer).
+  - `waystonewarps.teleport_cooldown.<number>`: Sets a player's teleport cooldown in seconds, for example `waystonewarps.teleport_cooldown.20` for 20-second cooldown. Lowest matching value wins.
+  - `waystonewarps.teleport_cooldown.*`: Allows instant teleportation (zero timer).
 - Towny support, which allows for free travel between two of the same town.
 - Simplified Chinese (zh_cn) localization.
 
@@ -30,6 +34,9 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 - Teleport particles and sound not appearing when teleportation is instant.
 - Shift clicking items into menus deletes items.
 - Check failure error when an item being placed does not have an attached ItemMeta.
+
+### Removed
+- `waystonewarps.teleport.cooldown_bypass` permission.
 
 ## [1.0.0]
 
@@ -61,7 +68,7 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 - New permissions to disallow teleportation:
   - `waystonewarps.teleport`: Disallows teleportation entirely
   - `waystonewarps.teleport.interworld`: Disallows teleportation to undiscovered warps
-  - `waystonewarps.teleport.cooldown_bypass`: Disallows teleportation to undiscovered warps
+  - `waystonewarps.teleport.cooldown_bypass`: Bypasses the set cooldown timer
 - New permission to disallow the creation of warps `waystonewarps.create`
 - New permission to disallow the discovery of warps `waystonewarps.discover`
 - New permission to use the /warpmenu command `waystonewarps.command.warpmenu`

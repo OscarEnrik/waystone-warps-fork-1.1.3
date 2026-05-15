@@ -51,7 +51,6 @@ To teleport to waystones, right click with a compass in hand. This will bring up
 | `waystonewarps.teleport`                 | Allows teleportation |
 | `waystonewarps.teleport.interworld`      | Allows teleportation between different worlds |
 | `waystonewarps.teleport.interworldgroup` | Allows teleportation between different worlds of same world group (requires [Multiverse-Inventories](https://mvplugins.org/inventories/)) |
-| `waystonewarps.teleport.cooldown_bypass` | Allows bypassing the warmup and cooldown timers |
 | `waystonewarps.create`                   | Allow the creation of warps |
 | `waystonewarps.discover`                 | Allow the discovery of warps |
 
@@ -78,11 +77,12 @@ For groups:
 
 Here are the different limits you can set:
 
-| Permission Node | Description |
-|-----------------|-------------|
-| `waystonewarps.warp_limit` | Defines how many waystone warps a player can create. |
-| `waystonewarps.teleport_cost` | Defines how much it costs to teleport. |
-| `waystonewarps.teleport_timer` | Defines how long it takes to teleport. |
+| Permission Node                   | Description |
+|-----------------------------------|-------------|
+| `waystonewarps.warp_limit`        | Defines how many waystone warps a player can create. |
+| `waystonewarps.teleport_cost`     | Defines how much it costs to teleport. |
+| `waystonewarps.teleport_timer`    | Defines how long it takes to teleport. |
+| `waystonewarps.teleport_cooldown` | Defines how long it takes to teleport. |
 
 ### Permission-based
 Permission based limits work as a fallback for when no metadata provider is available. If a value is set here but a
@@ -90,14 +90,16 @@ metadata provider is available, these values will be ignored.
 
 Here are the different permissions you can set:
 
-| Permission Node | Description |
-|-----------------|-------------|
-| `waystonewarps.warp_limit.<number>` | Sets a player's waystone creation limit, for example `waystonewarps.warp_limit.4` or `waystonewarps.warp_limit.19`. Highest matching value wins. |
-| `waystonewarps.warp_limit.*` | Allows unlimited waystone creation. |
-| `waystonewarps.teleport_cost.<number>` | Sets a player's teleport cost multiplier, for example `waystonewarps.teleport_cost.0.5` for half price. Lowest matching value wins. |
-| `waystonewarps.teleport_cost.*` | Allows free teleportation (zero cost). |
-| `waystonewarps.teleport_timer.<number>` | Sets a player's teleport timer in seconds, for example `waystonewarps.teleport_timer.3` for 3-second timer. Lowest matching value wins. |
-| `waystonewarps.teleport_timer.*` | Allows instant teleportation (zero timer). |
+| Permission Node                            | Description                                                                                                                                      |
+|--------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| `waystonewarps.warp_limit.<number>`        | Sets a player's waystone creation limit, for example `waystonewarps.warp_limit.4` or `waystonewarps.warp_limit.19`. Highest matching value wins. |
+| `waystonewarps.warp_limit.*`               | Allows unlimited waystone creation.                                                                                                              |
+| `waystonewarps.teleport_cost.<number>`     | Sets a player's teleport cost multiplier, for example `waystonewarps.teleport_cost.0.5` for half price. Lowest matching value wins.              |
+| `waystonewarps.teleport_cost.*`            | Allows free teleportation (zero cost).                                                                                                           |
+| `waystonewarps.teleport_timer.<number>`    | Sets a player's teleport timer in seconds, for example `waystonewarps.teleport_timer.3` for 3-second timer. Lowest matching value wins.          |
+| `waystonewarps.teleport_timer.*`           | Allows instant teleportation (zero timer).                                                                                                       |
+| `waystonewarps.teleport_cooldown.<number>` | Sets a player's teleport timer in seconds, for example `waystonewarps.teleport_timer.20` for 20-second cooldown. Lowest matching value wins.     |
+| `waystonewarps.teleport_cooldown.*`           | Allows instant teleportation (zero timer).                                                                                                       |
 
 ## Building from Source
 
