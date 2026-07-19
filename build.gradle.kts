@@ -64,7 +64,7 @@ dependencies {
     // dev.mizarc.waystonewarps.compat.anvil.FixedAnvilInventoryImpl. Pinned to 26.1.2 to match
     // the actual deployed server (Purpur 26.1.2-2587-dc4a255) - adjust if you're on a different
     // build; see comment at bottom of file for how to check.
-    paperweight.paperDevBundle("26.1.2.build.+")
+    paperweight.paperDevBundle("26.2.build.+")
     compileOnly("org.jetbrains.kotlin:kotlin-stdlib:2.3.0")
     compileOnly("io.insert-koin:koin-core-jvm:4.1.1")
     implementation("co.aikar:idb-core:1.0.0-SNAPSHOT")
@@ -78,18 +78,18 @@ dependencies {
 }
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(25))
 }
 
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(25)
     compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_21)
+        jvmTarget.set(JvmTarget.JVM_25)
     }
 }
 
 tasks.withType<JavaCompile>().configureEach {
-    options.release.set(21)
+    options.release.set(25)
 }
 
 tasks.test {
