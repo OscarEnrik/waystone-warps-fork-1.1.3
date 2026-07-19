@@ -145,6 +145,17 @@ tasks.build {
     dependsOn(tasks.shadowJar)
 }
 
+paperweight {
+    // paperweight-userdev's own setup tasks (applyPaperclipPatch, etc.) run under whatever JVM
+    // Gradle uses by default, which is this project's JDK 21 toolchain. Minecraft 26.x's own
+    // build/patch tooling needs a newer JDK than that, so we point *just* paperweight's internal
+    // work at a newer one - this doesn't change what bytecode version our own plugin compiles to
+    // (still JDK 21, set above).
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
 // --- paperweight-userdev notes ---
 // 1. "26.1.2.build.+" resolves the latest published dev bundle build for MC 26.1.2, matching your
 //    Purpur 26.1.2-2587-dc4a255. If it fails to resolve, run `./gradlew showPaperVersions` to see
@@ -152,10 +163,6 @@ tasks.build {
 //    paperweight.paperDevBundle("26.1.2.build.67-stable").
 // 2. Reobfuscation is intentionally not configured: Paper dropped it for 26.1+ (there's no more
 //    obfuscated/Spigot mapping to reobf to), so the normal shadowJar/build tasks above are enough.
-// 3. If the dev bundle's toolchain doesn't match ours (JDK 21), you'll get an error during the
-//    paperweightUserdevSetup task. Fix with:
-//      paperweight {
-//          javaLauncher = javaToolchains.launcherFor {
-//              languageVersion = JavaLanguageVersion.of(25) // whatever the bundle expects
-//          }
-//      }
+// 3. javaLauncher above is a guess (JDK 25) at what Minecraft 26.x's own build tooling needs. If
+//    paperweightUserdevSetup still fails after this, re-run with --stacktrace and check the real
+//    exception - it may need a different JDK version, or be an unrelated failure entirely.
