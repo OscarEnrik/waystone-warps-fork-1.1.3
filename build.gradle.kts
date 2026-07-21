@@ -74,7 +74,7 @@ dependencies {
     compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
     compileOnly("me.xdrop:fuzzywuzzy:1.4.0")
     compileOnly("com.palmergames.bukkit.towny:towny:0.102.0.14")
-    compileOnly("org.mvplugins.multiverse.inventories:multiverse-inventories:5.3.2")
+    compileOnly("org.mvplugins.multiverse.inventories:multiverse-inventories:5.3.5")
 }
 
 java {
