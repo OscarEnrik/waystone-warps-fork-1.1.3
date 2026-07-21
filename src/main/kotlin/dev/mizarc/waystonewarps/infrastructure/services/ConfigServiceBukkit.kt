@@ -96,4 +96,8 @@ class ConfigServiceBukkit(private val configFile: FileConfiguration) : ConfigSer
     override fun warpGroupsEnabled(): Boolean {
         return configFile.getBoolean("warp_groups_enabled", false)
     }
+
+    override fun getWarpMoveRadius(): Double {
+        return configFile.getDouble("warp_move_radius", 500.0)
+    }
 }
