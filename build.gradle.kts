@@ -48,11 +48,12 @@ repositories {
         url = uri("https://jitpack.io")
     }
     maven {
+        name = "glaremasters repo"
         url = uri("https://repo.glaremasters.me/repository/towny/")
     }
     maven {
-        name = "Multiverse"
-        url = uri("https://repo.onarandombox.com/content/groups/public/")
+        name = "multiversePublic"
+        url = uri("https://repo.onarandombox.com/public")
     }
 }
 
@@ -73,8 +74,8 @@ dependencies {
     implementation("com.github.stefvanschie.inventoryframework:IF:0.12.0")
     compileOnly("com.github.MilkBowl:VaultAPI:1.7.1")
     compileOnly("me.xdrop:fuzzywuzzy:1.4.0")
-    // compileOnly("com.palmergames.bukkit.towny:towny:0.102.0.14")
-    // compileOnly("org.mvplugins.multiverse.inventories:multiverse-inventories:5.3.5")
+    compileOnly("com.palmergames.bukkit.towny:towny:0.103.1.0")
+    compileOnly("org.mvplugins.multiverse.inventories:multiverse-inventories:5.3.5")
 }
 
 java {
